@@ -1,8 +1,8 @@
 package com.project.littlelemon.helpers
 
-import com.project.littlelemon.Data.AppDatabase
-import com.project.littlelemon.Data.MenuItemNetwork
-import com.project.littlelemon.Data.MenuNetwork
+import com.project.littlelemon.data.AppDatabase
+import com.project.littlelemon.data.MenuItemNetwork
+import com.project.littlelemon.data.MenuNetwork
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android

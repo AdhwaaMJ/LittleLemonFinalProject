@@ -1,4 +1,4 @@
-package com.project.littlelemon.Data
+package com.project.littlelemon.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

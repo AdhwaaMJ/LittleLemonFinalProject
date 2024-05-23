@@ -3,6 +3,7 @@ package com.project.littlelemon.screens
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,10 +16,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -40,6 +42,8 @@ import com.project.littlelemon.navigation.Onboarding
 import com.project.littlelemon.ui.theme.PrimaryGreen
 
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Onboarding(context: Context, navHostController: NavHostController) {
     val  sharedPreferences = context.getSharedPreferences("Little Lemon", Context.MODE_PRIVATE)
@@ -57,37 +61,34 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
         }
     }
 
-
     Column(
         Modifier
             .fillMaxSize()
             .padding(20.dp)
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(20.dp))
-    {
-        Row(Modifier.fillMaxWidth(0.6f))
-        {
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        Row(Modifier.fillMaxWidth(0.6f)
+        ) {
             Image(painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Little Lemon Logo")
         }
         Row(modifier = Modifier
             .height(150.dp),
-            verticalAlignment = Alignment.CenterVertically)
-        {
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Text(
                 text = "Let's get to know you",
                 style = MaterialTheme.typography.bodyLarge,
                 color = PrimaryGreen)
         }
 
-        Text(
-            text = "Personal Information",
+        Text(text = "Personal Information",
             textAlign = TextAlign.Start,
             modifier = Modifier.fillMaxWidth(),
             style = MaterialTheme.typography.labelMedium
         )
-
         OutlinedTextField(
             value = firstName.value,
             onValueChange ={
@@ -96,11 +97,12 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
             label = { Text(text = "First Name")},
             singleLine = true,
             placeholder = { Text(text = "John")},
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PrimaryGreen,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedLabelColor = PrimaryGreen,
+                focusedBorderColor = PrimaryGreen
             ),
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+        )
 
         OutlinedTextField(
             value = lastName.value,
@@ -110,11 +112,12 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
             label = { Text(text = "Last Name")},
             singleLine = true,
             placeholder = { Text(text = "Doe")},
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PrimaryGreen,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedLabelColor = PrimaryGreen,
+                focusedBorderColor = PrimaryGreen
             ),
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+        )
 
         OutlinedTextField(
             value = email.value,
@@ -124,11 +127,12 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
             label = { Text(text = "Email")},
             singleLine = true,
             placeholder = { Text(text = "johndoe@gmail.com")},
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PrimaryGreen,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedLabelColor = PrimaryGreen,
+                focusedBorderColor = PrimaryGreen
             ),
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+        )
 
         Spacer(modifier = Modifier.size(40.dp))
 
@@ -153,7 +157,9 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
 
 
                 navHostController.navigate(Home.route){
-                    popUpTo(Onboarding.route){inclusive = true}
+                    popUpTo(Onboarding.route){
+                        inclusive = true
+                    }
                     launchSingleTop = true
                 }
 
@@ -168,11 +174,15 @@ fun Onboarding(context: Context, navHostController: NavHostController) {
         },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp)) {
+                .height(50.dp).background(Color(0xfff4ce14)),
+        )
+        {
             Text(text = "Register",
                 color = Color.Black,
-                style = TextStyle(fontSize = 13.sp)
+                style = TextStyle(
+                    fontSize = 13.sp
                 )
+            )
         }
     }
 }

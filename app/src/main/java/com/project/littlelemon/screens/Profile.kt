@@ -14,10 +14,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +33,8 @@ import com.project.littlelemon.navigation.Home
 import com.project.littlelemon.navigation.Onboarding
 import com.project.littlelemon.ui.theme.PrimaryGreen
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Profile(context: Context,navHostController: NavHostController)
 {
@@ -51,20 +54,16 @@ fun Profile(context: Context,navHostController: NavHostController)
             .padding(20.dp)
             .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(20.dp))
-    {
+        verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Row(Modifier.fillMaxWidth(0.6f)) {
             Image(painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Little Lemon Logo")
         }
-        Text(
-            text = "Personal Information",
+
+        Text(text = "Personal Information",
             textAlign = TextAlign.Start,
             modifier = Modifier.fillMaxWidth(),
-            style = MaterialTheme.typography.labelMedium
-
-        )
-
+            style = MaterialTheme.typography.labelMedium)
         OutlinedTextField(
             enabled = false,
             readOnly = true,
@@ -73,9 +72,9 @@ fun Profile(context: Context,navHostController: NavHostController)
             label = { Text(text = "First Name")},
             singleLine = true,
             placeholder = { Text(text = "John")},
-            colors = OutlinedTextFieldDefaults.colors(
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledBorderColor = PrimaryGreen,
-                disabledLabelColor = PrimaryGreen,
+                disabledLabelColor = PrimaryGreen
             ),
             modifier = Modifier.fillMaxWidth())
 
@@ -87,9 +86,9 @@ fun Profile(context: Context,navHostController: NavHostController)
             label = { Text(text = "Last Name")},
             singleLine = true,
             placeholder = { Text(text = "Doe")},
-            colors = OutlinedTextFieldDefaults.colors(
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledBorderColor = PrimaryGreen,
-                disabledLabelColor = PrimaryGreen,
+                disabledLabelColor = PrimaryGreen
             ),
             modifier = Modifier.fillMaxWidth())
 
@@ -101,11 +100,12 @@ fun Profile(context: Context,navHostController: NavHostController)
             label = { Text(text = "Email")},
             singleLine = true,
             placeholder = { Text(text = "johndoe@gmail.com")},
-            colors = OutlinedTextFieldDefaults.colors(
+            colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledBorderColor = PrimaryGreen,
-                disabledLabelColor = PrimaryGreen,
+                disabledLabelColor = PrimaryGreen
             ),
             modifier = Modifier.fillMaxWidth())
+
         Spacer(modifier = Modifier.size(40.dp))
 
         Button(onClick = {
@@ -121,10 +121,10 @@ fun Profile(context: Context,navHostController: NavHostController)
         },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp))
-        {
+                .height(50.dp)) {
             Text(text = "Log Out")
         }
     }
+
 }
 

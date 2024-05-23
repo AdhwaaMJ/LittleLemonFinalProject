@@ -1,4 +1,4 @@
-package com.project.littlelemon.Data
+package com.project.littlelemon.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

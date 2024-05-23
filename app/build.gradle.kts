@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id ("kotlin-kapt")
+//    id("kotlin-kapt")
     id ("org.jetbrains.kotlin.plugin.serialization")
-//    kotlin("kapt")
+    kotlin("kapt")
 //    kotlin("plugin.serialization") version "1.9.0"
 }
 
@@ -72,20 +72,21 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation ("io.ktor:ktor-client-android:2.1.3")
-    implementation ("io.ktor:ktor-client-content-negotiation:2.1.3")
-    implementation ("io.ktor:ktor-serialization-kotlinx-json:2.1.3")
+    //navigation
+    implementation ("androidx.navigation:navigation-compose:2.6.0")
 
-    //room
-    implementation ("androidx.room:room-runtime:2.6.1")
-    kapt ("androidx.room:room-compiler:2.6.1")
+    implementation("io.ktor:ktor-client-android:2.1.3")
+    implementation("io.ktor:ktor-client-content-negotiation:2.1.3")
+    implementation( "io.ktor:ktor-serialization-kotlinx-json:2.1.3")
+//
+    implementation( "androidx.room:room-runtime:2.4.3")
+    kapt( "androidx.room:room-compiler:2.4.3")
+//
 
-    implementation ("com.github.bumptech.glide:compose:1.0.0-alpha.1")
+    implementation( "com.github.bumptech.glide:compose:1.0.0-alpha.1")
 
-    implementation ("androidx.room:room-ktx:2.6.1")
 
-    implementation ("androidx.compose.runtime:runtime-livedata:1.7.0-beta01")
-
+    implementation( "androidx.compose.runtime:runtime-livedata:1.3.2")
 
 //    implementation("io.ktor:ktor-client-android:2.1.3")
 //    implementation("io.ktor:ktor-client-content-negotiation:2.1.3")
